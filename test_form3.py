@@ -1,5 +1,6 @@
 import pytest
 from selenium import webdriver
+from selenium.webdriver import ActionChains
 from webdriver_manager.chrome import ChromeDriverManager
 import time
 
@@ -44,4 +45,11 @@ def test_form(setUp):
     driver.find_element_by_name("fcheckbox").click()
     time.sleep(1)
     driver.find_element_by_name("subbtn").click()
+
+    #Right Click functionality
     time.sleep(1)
+    action = ActionChains(driver)
+    action.context_click(driver.find_element_by_name("Pincode"))
+    time.sleep(1)
+    action.perform()
+    time.sleep(5)
